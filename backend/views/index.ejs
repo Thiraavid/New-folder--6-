@@ -1,0 +1,30 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Job Board</title>
+    <link rel="stylesheet" href="/styles.css">
+</head>
+<body>
+    <div class="navbar">
+        <h1>Job Board</h1>
+        <form method="GET" action="/jobs">
+            <input type="text" name="search" placeholder="Search jobs..." value="<%= search %>">
+            <button type="submit">Search</button>
+        </form>
+    </div>
+
+    <div id="job-list">
+        <% jobs.forEach(job => { %>
+            <div class="job">
+                <h3><a href="/jobs/<%= job.id %>"><%= job.title %></a></h3>
+                <p><strong>Company:</strong> <%= job.company %></p>
+                <p><strong>Location:</strong> <%= job.location %></p>
+                <p><strong>Experience:</strong> <%= job.experience %></p>
+                <a href="<%= job.link %>" target="_blank">Apply Now</a>
+            </div>
+        <% }) %>
+    </div>
+</body>
+</html>
